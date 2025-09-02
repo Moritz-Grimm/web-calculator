@@ -1,27 +1,23 @@
-const display = document.getElementById("display");
-const resultButton = document.getElementById('result-button');
-const clearButton = document.getElementById('clear-button');
-const deleteButton = document.getElementById('delete-last');
-const buttons = document.querySelectorAll("#buttons button");
+document.getElementById('buttons').addEventListener('click', function(event) {
+  const button = event.target;
+  const display = document.getElementById('display');
 
-buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const value = button.textContent;
-
-    display.value += value;
-  });
-});
-
-resultButton.addEventListener("click", () => {
-  let parsedValue = eval(display.value)
-  let result = parsedValue;
-  display.value = result;
-});
-
-clearButton.addEventListener("click", () => {
-  display.value = null;
-})
-
-deleteButton.addEventListener("click", () => {
-  display.value =  display.value.slice(0, -1);
+  if (button.classList.contains('number')) {
+    const number = button.getAttribute('data-number');
+    display.value += number;
+  } else if (button.classList.contains('operator')) {
+    const operator = button.getAttribute('data-operator')
+    display.value += operator;
+  } else if (button.id === 'clear-button') {
+    display.value = '';
+  } else if (button.id === 'delete-last') {
+    display.value = display.value.slice(0, -1);
+  } else if (button.id === 'result-button') {
+    try {
+      display.value = eval(display.value)
+    } catch (error) {
+      display.value = 'Error';
+      console.error(`Error: ${error}`);
+    }
+  }
 })
