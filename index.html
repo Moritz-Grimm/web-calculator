@@ -10,6 +10,20 @@
 </head>
 
 <body>
+    <div class="mode-switch-container">
+        <label class="switch">
+            <input type="checkbox" id="modeToggle" onclick=toggleDarkmode()>
+            <span class="slider">
+                <div class="star star_1"></div>
+                <div class="star star_2"></div>
+                <div class="star star_3"></div>
+                <svg class="cloud" viewBox="0 0 100 50" fill="white">
+                    <path
+                        d="M20,30 Q20,20 30,20 Q35,15 45,15 Q55,15 60,20 Q70,20 70,30 Q75,35 70,40 L25,40 Q15,35 20,30 Z" />
+                </svg>
+            </span>
+        </label>
+    </div>
     <div id="calculator">
         <input type="text" id="display" disabled>
         <div id="buttons">
