@@ -17,3 +17,6 @@ You can start the calculator in two ways:
 
 2. **Online:**  
    Visit it [here](http://placeholder-url.com/)
+
+## License
+This project is licensed under the [MIT](/LICENSE) License.
