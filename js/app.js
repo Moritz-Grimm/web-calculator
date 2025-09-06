@@ -49,3 +49,8 @@ function calculateResult() {
 function backspace() {
   display.value = display.value.slice(0, -1);
 }
+
+function toggleWhitemode() {
+  const element = document.documentElement;
+  element.classList.toggle("light-mode");
+}
