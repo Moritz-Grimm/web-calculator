@@ -6,7 +6,7 @@ document.addEventListener('keydown', (event) => {
   if (!event.ctrlKey && !event.altKey && !event.metaKey) {
     const allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*','/','.',','];
 
-    if (event.key.contains(allowedKeys)) {
+    if (event.key.includes(allowedKeys)) {
       event.preventDefault();
       display.value += event.key;
     }
@@ -17,6 +17,15 @@ document.addEventListener('keydown', (event) => {
     if (event.key === "Backspace") {
       event.preventDefault();
       backspace();
+    }
+    if (event.key === "c") {
+      clearDisplay();
+    }
+    if (event.key === "d") {
+      backspace();
+    }
+    if (event.key === "r") {
+      calculateResult();
     }
   }
 })
@@ -36,7 +45,7 @@ document.getElementById('buttons').addEventListener('click', function (event) {
     const operator = button.getAttribute('data-operator')
     display.value += operator;
   } else if (button.id === 'clear-button') {
-    display.value = '';
+    clearDisplay();
   } else if (button.id === 'delete-last') {
     backspace();
   } else if (button.id === 'dot-button') {
@@ -68,4 +77,8 @@ function backspace() {
 function toggleWhitemode() {
   const element = document.documentElement;
   element.classList.toggle("light-mode");
+}
+
+function clearDisplay() {
+  display.value = '';
 }
