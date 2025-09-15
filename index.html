@@ -10,51 +10,41 @@
 </head>
 
 <body>
-    <div id="calculator-wrapper">
-        <div id="settings-container">
-            <label class="switch">
-                <input type="checkbox" id="modeToggle" onclick=toggleWhitemode()>
-                <span class="slider">
-                    <div class="star star_1"></div>
-                    <div class="star star_2"></div>
-                    <div class="star star_3"></div>
-                    <svg class="cloud" viewBox="0 0 100 50" fill="white">
-                        <path
-                            d="M20,30 Q20,20 30,20 Q35,15 45,15 Q55,15 60,20 Q70,20 70,30 Q75,35 70,40 L25,40 Q15,35 20,30 Z" />
-                    </svg>
-                </span>
-            </label>
-            <select id="decimal-places">
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </div>
-        <div id="calculator">
-            <input type="text" id="display" disabled>
-            <div id="buttons">
-                <button class="number" data-number="7">7</button>
-                <button class="number" data-number="8">8</button>
-                <button class="number" data-number="9">9</button>
-                <button class="operator" data-operator="/">/</button>
-                <button class="number" data-number="4">4</button>
-                <button class="number" data-number="5">5</button>
-                <button class="number" data-number="6">6</button>
-                <button class="operator" data-operator="*">*</button>
-                <button class="number" data-number="1">1</button>
-                <button class="number" data-number="2">2</button>
-                <button class="number" data-number="3">3</button>
-                <button class="operator" data-operator="-">-</button>
-                <button id="result-button">=</button>
-                <button class="number" data-number="0">0</button>
-                <button id="dot-button" data-value=".">.</button>
-                <button class="operator" data-operator="+">+</button>
-                <button id="clear-button">A/C</button>
-                <button id="delete-last">⌫</button>
-            </div>
+    <div class="mode-switch-container">
+        <label class="switch">
+            <input type="checkbox" id="modeToggle" onclick=toggleWhitemode()>
+            <span class="slider">
+                <div class="star star_1"></div>
+                <div class="star star_2"></div>
+                <div class="star star_3"></div>
+                <svg class="cloud" viewBox="0 0 100 50" fill="white">
+                    <path
+                        d="M20,30 Q20,20 30,20 Q35,15 45,15 Q55,15 60,20 Q70,20 70,30 Q75,35 70,40 L25,40 Q15,35 20,30 Z" />
+                </svg>
+            </span>
+        </label>
+    </div>
+    <div id="calculator">
+        <input type="text" id="display" disabled>
+        <div id="buttons">
+            <button class="number" data-number="7">7</button>
+            <button class="number" data-number="8">8</button>
+            <button class="number" data-number="9">9</button>
+            <button class="operator" data-operator="/">/</button>
+            <button class="number" data-number="4">4</button>
+            <button class="number" data-number="5">5</button>
+            <button class="number" data-number="6">6</button>
+            <button class="operator" data-operator="*">*</button>
+            <button class="number" data-number="1">1</button>
+            <button class="number" data-number="2">2</button>
+            <button class="number" data-number="3">3</button>
+            <button class="operator" data-operator="-">-</button>
+            <button id="result-button">=</button>
+            <button class="number" data-number="0">0</button>
+            <button id="dot-button" data-value=".">.</button>
+            <button class="operator" data-operator="+">+</button>
+            <button id="clear-button">A/C</button>
+            <button id="delete-last"><img src="assets/backspace-icon.png" alt="delete"></button>
         </div>
     </div>
     <script src="js/app.js"></script>
