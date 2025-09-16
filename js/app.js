@@ -59,7 +59,6 @@ function calculateResult() {
   try {
     let result = eval(display.value);
     let decimals = Number(decimalPlaces.value);
-    console.log(decimals);
     if (result) {
       result = parseFloat(result.toFixed(decimals));
       display.value = result;
