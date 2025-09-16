@@ -66,6 +66,8 @@ function calculateResult() {
     let result = eval(display.value);
     let decimals = Number(decimalPlaces.value);
     if (result) {
+      display.classList.add('flash');
+      setTimeout(() => display.classList.remove('flash'), 300);
       result = parseFloat(result.toFixed(decimals));
       display.value = result;
     }

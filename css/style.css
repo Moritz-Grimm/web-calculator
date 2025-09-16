@@ -80,6 +80,15 @@ body {
   border-radius: 8px;
 }
 
+@keyframes flash {
+  0% { background: grey; }
+  100% { background: inherit; }
+}
+
+.flash {
+  animation: flash 0.3s;
+}
+
 #buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
