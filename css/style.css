@@ -1,94 +1,130 @@
 :root {
-    background-color: #404040;
+  --bg-color: #404040;
+  --calculator-border: #666;
+  --calculator-shadow: rgba(0, 0, 0, 0.3);
+  --display-bg: #2a2a2a;
+  --display-text: #ffffff;
+  --button-bg: #4a4a4a;
+  --button-hover-shadow: rgba(0, 0, 0, 0.2);
+  --button-active-bg: #666;
+  --operator-bg: #097171;
+  --input-border: #666;
+  --input-bg: #404040;
+  --input-shadow: rgba(0, 0, 0, 0.2);
+  
+  background-color: var(--bg-color);
 }
 
 :root.light-mode {
-    background-color: #f5f5f5;
+  --bg-color: #f5f5f5;
+  --button-bg: #e0e0e0;
+  --button-text: #333333;
+  --operator-bg: #1cd2d2;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 20px;
-    gap: 20px;
-}
-
-#calculator {
-    display: grid;
-    grid-template-rows: auto 1fr;
-
-    aspect-ratio: 4/5;
-
-    border: 2px solid #666;
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-#display {
-    grid-row: 1;
-    grid-column: 1 / -1;
-
-    font-size: 2rem;
-    text-align: right;
-    padding: 10px;
-    background-color: #2a2a2a;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    margin-bottom: 5px;
-}
-
-#buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    gap: 5px;
-}
-
-button {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 8px;
-    background-color: #4a4a4a;
-    color: white;
-    font-size: 1.2rem;
-    transition: all 0.2s ease;
-}
-
-button:hover {
-    transform: scale(1.05);
-}
-
-button:active {
-    transform: scale(0.95);
-    background-color: #666;
-}
-
-#delete-last img{
-    width: 50%;
-    height: 50%;
-    object-fit: cover;
-}
-
-.operator {
-    background-color: #097171;
+:root.light-mode #display {
+  --display-bg: #ffffff;
+  --display-text: #2a2a2a;
 }
 
 :root.light-mode button {
-    background-color: #e0e0e0;
-    color: #333333;
+  background-color: var(--button-bg);
+  color: var(--button-text);
 }
 
 :root.light-mode button.operator {
-    background-color: #1cd2d2;
+  background-color: var(--operator-bg);
 }
 
+:root.light-mode #decimal-places {
+  background-color: var(--bg-color);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#calculator-wrapper {
+  box-sizing: border-box;
+  max-width: 300px;
+  max-height: 100vh;
+}
+
+#settings-container {
+  display: flex;
+  padding: 10px;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+}
+
+#calculator {
+  box-shadow: 0 8px 32px var(--calculator-shadow);
+  border: 2px solid var(--calculator-border);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+#display {
+  width: 100%;
+  height: 55px;
+  font-size: 2rem;
+  text-align: right;
+  margin-bottom: 5px;
+  box-sizing: border-box;
+  background-color: var(--display-bg);
+  color: var(--display-text);
+  border-radius: 8px;
+}
+
+@keyframes flash {
+  0% { background: grey; }
+  100% { background: inherit; }
+}
+
+.flash {
+  animation: flash 0.3s;
+}
+
+#buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+#buttons button {
+  height: 48px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  background-color: var(--button-bg);
+}
+
+#buttons button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px var(--button-hover-shadow);
+}
+
+#buttons button:active {
+  transform: scale(0.95);
+  background-color: var(--button-active-bg);
+}
+
+#buttons .operator {
+  background-color: var(--operator-bg);
+}
+
+#decimal-places {
+  border: 2px solid var(--input-border);
+  border-radius: 10px;
+  width: 70px;
+  background-color: var(--input-bg);
+  box-shadow: 0 5px 15px var(--input-shadow);
+}
 
 /* IMPORTED */
 .switch {
@@ -133,11 +169,11 @@ button:active {
   box-shadow: inset 8px -4px 0px 0px #fff;
 }
 
-.switch input:checked + .slider {
+.switch input:checked+.slider {
   background-color: #00a6ff;
 }
 
-.switch input:checked + .slider:before {
+.switch input:checked+.slider:before {
   transform: translateX(1.8em);
   box-shadow: inset 15px -4px 0px 15px #ffcf48;
 }
@@ -166,7 +202,7 @@ button:active {
   top: 0.9em;
 }
 
-.switch input:checked ~ .slider .star {
+.switch input:checked~.slider .star {
   opacity: 0;
 }
 
@@ -179,7 +215,6 @@ button:active {
   transition: all 0.4s;
 }
 
-.switch input:checked ~ .slider .cloud {
+.switch input:checked~.slider .cloud {
   opacity: 1;
 }
-
