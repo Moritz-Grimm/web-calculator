@@ -4,9 +4,9 @@ const decimalPlaces = document.getElementById('decimal-places');
 
 document.addEventListener('keydown', (event) => {
   if (!event.ctrlKey && !event.altKey && !event.metaKey) {
-    const allowedKeys = ['0','1','2','3','4','5','6','7','8','9','+','-','*','/','.',','];
-
-    if (event.key.includes(allowedKeys)) {
+    const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '.', ',', '(', ')'];
+    
+    if (allowedKeys.includes(event.key)) {
       event.preventDefault();
       display.value += event.key;
     }
@@ -34,24 +34,30 @@ document.addEventListener('keydown', (event) => {
 document.getElementById('buttons').addEventListener('click', function (event) {
   const button = event.target.closest('button');
 
-  if (!button) {
-    return;
-  }
+  if (!button) return;
 
-  if (button.classList.contains('number')) {
-    const number = button.getAttribute('data-number');
-    display.value += number;
-  } else if (button.classList.contains('operator')) {
-    const operator = button.getAttribute('data-operator')
-    display.value += operator;
-  } else if (button.id === 'clear-button') {
-    clearDisplay();
-  } else if (button.id === 'delete-last') {
-    backspace();
-  } else if (button.id === 'dot-button') {
-    display.value += button.getAttribute('data-value');
-  } else if (button.id === 'result-button') {
-    calculateResult();
+  switch (true) {
+    case button.classList.contains('number'):
+      display.value += button.getAttribute('data-number')
+      break;
+    case button.classList.contains('operator'):
+      display.value += button.getAttribute('data-operator');  
+      break;
+    case button.classList.contains('parenthese'):
+      display.value += button.getAttribute('data-parenthese');
+      break;
+    case button.id === 'clear-button':
+      clearDisplay();
+      break;
+    case button.id === 'backspace':
+      backspace();
+      break;
+    case button.id === 'dot-button':
+      display.value += button.getAttribute('data-value')
+      break;
+    case button.id === 'result-button':
+      calculateResult();
+      break;
   }
 });
 
